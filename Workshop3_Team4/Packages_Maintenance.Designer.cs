@@ -313,9 +313,9 @@
             // LblPackNameValidate
             // 
             this.LblPackNameValidate.ForeColor = System.Drawing.Color.DarkRed;
-            this.LblPackNameValidate.Location = new System.Drawing.Point(320, 104);
+            this.LblPackNameValidate.Location = new System.Drawing.Point(320, 96);
             this.LblPackNameValidate.Name = "LblPackNameValidate";
-            this.LblPackNameValidate.Size = new System.Drawing.Size(423, 13);
+            this.LblPackNameValidate.Size = new System.Drawing.Size(423, 21);
             this.LblPackNameValidate.TabIndex = 38;
             // 
             // LblPackageID
@@ -342,7 +342,7 @@
             // TxtPackName
             // 
             this.TxtPackName.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPackName.Location = new System.Drawing.Point(315, 68);
+            this.TxtPackName.Location = new System.Drawing.Point(315, 58);
             this.TxtPackName.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtPackName.Name = "TxtPackName";
             this.TxtPackName.Size = new System.Drawing.Size(611, 34);
@@ -353,7 +353,7 @@
             // LblPackName
             // 
             this.LblPackName.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.LblPackName.Location = new System.Drawing.Point(31, 68);
+            this.LblPackName.Location = new System.Drawing.Point(31, 58);
             this.LblPackName.Name = "LblPackName";
             this.LblPackName.Size = new System.Drawing.Size(183, 31);
             this.LblPackName.TabIndex = 20;

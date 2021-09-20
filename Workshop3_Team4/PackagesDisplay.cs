@@ -66,22 +66,6 @@ namespace Workshop3_Team4
                 // format the odd numbered rows
                 pkgDGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
 
-
-                // format the column header
-                //dgvProducts.EnableHeadersVisualStyles = false;
-                //dgvProducts.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 9, FontStyle.Bold);
-                //dgvProducts.ColumnHeadersDefaultCellStyle.BackColor = Color.LightSkyBlue;
-                //dgvProducts.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
-
-
-                //dgvProducts.Columns[0].Width = 110;
-                //dgvProducts.Columns[1].Width = 140;
-                //dgvProducts.Columns[2].Width = 200;
-                //this.dgvProducts.Columns[3].Visible = false;
-
-                // format the odd numbered rows
-                //dgvProducts.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
-
             }
         }
 

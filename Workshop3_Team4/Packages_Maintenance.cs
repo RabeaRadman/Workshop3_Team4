@@ -387,19 +387,8 @@ namespace Workshop3_Team4
 
         private void ToolmnuDisplay_Click_1(object sender, EventArgs e)
         {
-            //    PnlDelete.Visible = true;
-            //    BtnPackDelete.Visible = false;
-            //    label2.Visible = true;
-            //    CmbEdit.Visible = true;
-            //    LstPackPrdSpp.Visible = true;
-            //    BtnPPSDelete.Visible = false;
-            //    LblProdSuppName.Visible = false;
-            //    GridRemove.AutoGenerateColumns = true;
-            //    //GridRemove.DataSource = Context.Packages.ToList();
-
             PackagesDisplay packdispFrm = new PackagesDisplay();          //Open Packge Display form 
             packdispFrm.ShowDialog();
-
         }
     }
 }
