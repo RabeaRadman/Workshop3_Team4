@@ -62,7 +62,7 @@ namespace Workshop3_Team4
         {
             if (LstPackProdSupp.SelectedItems.Count == 0)
             {
-                MessageBox.Show("Please select a Product to add", "Add Product", 0);
+                MessageBox.Show("Please select a Product to add", "Add Product Error", 0);
             }
             else
                 this.Close();

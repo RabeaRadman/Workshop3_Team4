@@ -185,7 +185,10 @@ namespace Workshop3_Team4
 
             pac.AutoGenerateColumns = false;  
             pac.DataSource = Context.Packages.ToList();
-            
+
+            //format columns base price (5) & agency commission (6) to display currency
+            pac.Columns[5].DefaultCellStyle.Format = "c";
+            pac.Columns[6].DefaultCellStyle.Format = "c";
         }
 
         private void InitializeTextboxes()
@@ -368,6 +371,7 @@ namespace Workshop3_Team4
             }
 
             pac.DataSource = Context.Packages.ToList();
+        
 
         }
 
