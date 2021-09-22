@@ -45,11 +45,11 @@ namespace Workshop3_Team4
             InitializeTextboxes();
             EnableInputs();
 
-            PnlDelete.Visible = false;
-            PnlAddModify.Visible = true;
+            PnlDelete.Visible = false; // Hide Delete Panle
+            PnlAddModify.Visible = true; //Make add/modify panel visible
             LblTitle.Text = "Add Packages";
-            TxtWelcome.Visible = false;
-            CmbEdit.Visible = false;
+            TxtWelcome.Visible = false; //Hide welocme message
+            CmbEdit.Visible = false; //Hide comboEdit list 
             LblPackProdCode.Visible = true;
              
         }
@@ -67,16 +67,17 @@ namespace Workshop3_Team4
         private void BtnSave_Click(object sender, EventArgs e)
         {
             if (ValidatorPackage.IsPresent(TxtPackName, LblPackNameValidate) &&
-                ValidatorPackage.IsMore50(TxtPackName, LblPackNameValidate) &&
+                ValidatorPackage.IsMore50(TxtPackName, LblPackNameValidate)&&
+                ValidatorPackage.IsEndDateLater(DatePickStartDate, DatePickEndDate, LblPackEndValidate) &&
+                //ValidatorPackage.IsStartDate(DatePickStartDate, DatePickEndDate, LblPackStartValidate) &&
                 ValidatorPackage.IsPresent(TxtPackDesc, LblPackDescValidate) &&
                 ValidatorPackage.IsMore50(TxtPackDesc, LblPackDescValidate) &&
-                ValidatorPackage.IsEndDateLater(DatePickStartDate, DatePickEndDate, LblPackStartValidate) &&
                 ValidatorPackage.IsNotAlpha(TxtPackBasePrice, LblPackBaseValidate) &&
                 ValidatorPackage.IsPositive(TxtPackBasePrice, LblPackBaseValidate) &&
                 //ValidatorPackage.IsDecimal(TxtPackBasePrice, LblPackBaseValidate) &&
-                ValidatorPackage.IsLessThanAgency(TxtPackBasePrice, TxtPackAgency, LblPackBaseValidate) &&
-                ValidatorPackage.IsNotAlpha(TxtPackAgency, LblPackACValidate) &&
-                ValidatorPackage.IsPositive(TxtPackAgency, LblPackACValidate))
+                ValidatorPackage.IsLessThanAgency(TxtPackBasePrice, TxtPackCommission, LblPackBaseValidate) &&
+                ValidatorPackage.IsNotAlpha(TxtPackCommission, LblPackACValidate) &&
+                ValidatorPackage.IsPositive(TxtPackCommission, LblPackACValidate))
                //ValidatorPackage.IsDecimal(TxtPackAgency, LblPackACValidate)
           
             if (LblTitle.Text == "Add Packages")
@@ -94,7 +95,7 @@ namespace Workshop3_Team4
             currpackage.PkgEndDate = DatePickEndDate.Value;
             currpackage.PkgDesc = TxtPackDesc.Text;
             currpackage.PkgBasePrice = Convert.ToDecimal(TxtPackBasePrice.Text);
-            currpackage.PkgAgencyCommission = Convert.ToDecimal(TxtPackAgency.Text);
+            currpackage.PkgAgencyCommission = Convert.ToDecimal(TxtPackCommission.Text);
             Context.SaveChanges();
             LblPackageID.Text = "Package ID: " + currpackage.PackageId + " has been modified";
 
@@ -112,7 +113,7 @@ namespace Workshop3_Team4
                 PkgEndDate = DatePickEndDate.Value.Date,
                 PkgDesc = TxtPackDesc.Text,
                 PkgBasePrice = decimal.Parse(TxtPackBasePrice.Text),
-                PkgAgencyCommission = decimal.Parse(TxtPackAgency.Text)
+                PkgAgencyCommission = decimal.Parse(TxtPackCommission.Text)
             };
 
             Context.Packages.Add(newpackage);
@@ -133,11 +134,12 @@ namespace Workshop3_Team4
             DatePickEndDate.Enabled = true;
             TxtPackDesc.Enabled = true;
             TxtPackBasePrice.Enabled = true;
-            TxtPackAgency.Enabled = true;
+            TxtPackCommission.Enabled = true;
 
             BtnSave.Visible = true;
             BtnProdSuppSave.Visible = false;
             BtnProdSuppGet.Visible = false;
+            btnExit.Visible = true;
             LblProdCodeValidate.Text = "";
             LblPackProdCode.Text = "";
 
@@ -169,7 +171,7 @@ namespace Workshop3_Team4
             DatePickEndDate.Text = currpackage.PkgEndDate.ToString();
             TxtPackDesc.Text = currpackage.PkgDesc;
             TxtPackBasePrice.Text = currpackage.PkgBasePrice.ToString("n2");
-            TxtPackAgency.Text = currpackage.PkgAgencyCommission?.ToString("n2");
+            TxtPackCommission.Text = currpackage.PkgAgencyCommission?.ToString("n2");
 
         }
 
@@ -191,7 +193,7 @@ namespace Workshop3_Team4
             TxtPackName.Text = "";
             TxtPackDesc.Text = "";
             TxtPackBasePrice.Text = "";
-            TxtPackAgency.Text = "";
+            TxtPackCommission.Text = "";
             DatePickEndDate.Value = DateTime.Now;
             DatePickStartDate.Value = DateTime.Now;
             LblPackageID.Text = "";
@@ -216,12 +218,45 @@ namespace Workshop3_Team4
         {            
             prodsuppdispFrm.ShowDialog();
         }
-        
-          // The selected Product for the saved packaged is being saved to the
-          // Packages Product Suppler table
+
+
+
+
+        //Displays the Packages Product Supplier table to be added for the package
+        private void GetProductList()
+        {
+            prodsuppdispFrm.ShowDialog();
+
+            if (prodsuppdispFrm.LblProdSuppSelect.Text != "")
+            {
+                txtselect = "Selected Product: ";
+                BtnProdSuppSave.Visible = true;
+            }
+            else
+            {
+                txtselect = "No product selected. Please select a product.";
+                BtnSave.Visible = false;
+                BtnProdSuppSave.Visible = false;
+            }
+
+
+            LblPackProdCode.Text = txtselect + prodsuppdispFrm.LblProdSuppSelect.Text;
+
+            TxtPackName.Enabled = false;
+            DatePickStartDate.Enabled = false;
+            DatePickEndDate.Enabled = false;
+            TxtPackDesc.Enabled = false;
+            TxtPackBasePrice.Enabled = false;
+            TxtPackCommission.Enabled = false;
+            BtnProdSuppGet.Visible = true;
+            BtnSave.Visible = false;
+        }
+
+
+        // The selected Product for the saved packaged is being saved to the
+        // Packages Product Suppler table
         private void BtnProdSuppSave_Click(object sender, EventArgs e)
-        {            
-            
+        {           
             int indx = Int32.Parse(prodsuppdispFrm.LblProdSuppSelect.Text.Substring(0, 10).Trim());
             currprodsup = Context.ProductsSuppliers.Find(indx);
          
@@ -235,32 +270,10 @@ namespace Workshop3_Team4
 
             Context.SaveChanges();
 
-            LblProdCodeValidate.Text = $"Product Supplier id# {indx.ToString()} is added for this package";
+            //LblProdCodeValidate.Text = $"Product Supplier id# {indx.ToString()} is added for this package";
+            BtnProdSuppSave.Visible = false;
+            MessageBox.Show($"Product Supplier id# {indx.ToString()} is added for this package");
 
-        }
-
-        //Displays the Packages Product Supplier table to be added for the package
-        private void GetProductList()
-        {
-            prodsuppdispFrm.ShowDialog();
-
-            if (prodsuppdispFrm.LblProdSuppSelect.Text != "")
-                txtselect = "Selected Product: ";
-            else
-                txtselect = "No product selected. Please select a product.";
-
-            LblPackProdCode.Text = txtselect + prodsuppdispFrm.LblProdSuppSelect.Text;
-                  
-            TxtPackName.Enabled = false;
-            DatePickStartDate.Enabled = false;
-            DatePickEndDate.Enabled = false;
-            TxtPackDesc.Enabled = false;
-            TxtPackBasePrice.Enabled = false;
-            TxtPackAgency.Enabled = false;
-
-            BtnProdSuppSave.Visible = true;
-            BtnProdSuppGet.Visible = true;
-            BtnSave.Visible = false;
         }
 
         private void BtnProdSuppGet_Click(object sender, EventArgs e)

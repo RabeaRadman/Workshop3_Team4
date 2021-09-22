@@ -34,8 +34,7 @@ namespace Workshop3_Team4
         {
             Context = new TravelExpertsContext();
 
-            LblProdSuppSelect.Text = "At lease one Product Must be selected to be added to package";
-            BtnprodsuppSave.Visible = false;
+            LblProdSuppSelect.Text = "";
             DisplayProductSupplier();
         }
 
@@ -57,19 +56,21 @@ namespace Workshop3_Team4
                                                      product.Product.ProdName, product.Supplier.SupName);
                 LstPackProdSupp.Items.Add(prodsuppitem);
             }
-            
         }
 
         private void BtnProdSuppClose_Click(object sender, EventArgs e)
         {
-            
-            this.Close();
+            if (LstPackProdSupp.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Please select a Product to add", "Add Product", 0);
+            }
+            else
+                this.Close();
         }
 
         private void LstPackProdSupp_SelectedIndexChanged(object sender, EventArgs e)
         {
             LblProdSuppSelect.Text = LstPackProdSupp.SelectedItem.ToString().Substring(5);
         }
-
     }
 }

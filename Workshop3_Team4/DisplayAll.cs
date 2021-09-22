@@ -93,6 +93,10 @@ namespace Workshop3_Team4
 
                 // format the odd numbered rows
                 PPSDGrid.AlternatingRowsDefaultCellStyle.BackColor = Color.LightBlue;
+
+                //format columns base price (5) & agency commission (6) to display currency
+                pkgDGrid.Columns[5].DefaultCellStyle.Format = "c";
+                pkgDGrid.Columns[6].DefaultCellStyle.Format = "c";
             }
         }
 // display production table in grid foramt

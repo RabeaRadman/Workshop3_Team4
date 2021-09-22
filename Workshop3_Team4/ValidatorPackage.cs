@@ -53,13 +53,32 @@ namespace Workshop3_Team4
                 
             if (ds.Value >= de.Value)
             {
-                lb.Text = ds.Tag + " cannot be same date as or after " + de.Tag;
+                lb.Text = de.Tag + " has to be greater than " + ds.Tag;
                 lb.Visible = true;
                 result = false; // Text is more than 50 characters
             }
 
             return result;
         }
+
+
+        public static bool IsStartDate(DateTimePicker ds, DateTimePicker de, Label lb)
+        {
+
+            bool result = true; // Text  is less than 50 characters
+            lb.Visible = false;
+
+            if (ds.Value >= de.Value)
+            {
+                lb.Text = ds.Tag + " has to be smaller than " + de.Tag;
+                lb.Visible = true;
+                result = false; // Text is more than 50 characters
+            }
+
+            return result;
+        }
+
+
         public static bool IsNotAlpha(TextBox tb, Label lb)
         {
             bool result = true;

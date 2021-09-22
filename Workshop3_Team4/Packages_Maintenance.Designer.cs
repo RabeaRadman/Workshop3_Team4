@@ -39,8 +39,10 @@
             this.ToolmnuDisplay = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolmnuClose = new System.Windows.Forms.ToolStripMenuItem();
             this.PnlAddModify = new System.Windows.Forms.Panel();
+            this.BtnSave = new System.Windows.Forms.Button();
             this.CmbEdit = new System.Windows.Forms.ComboBox();
             this.BtnProdSuppGet = new System.Windows.Forms.Button();
+            this.btnExit = new System.Windows.Forms.Button();
             this.BtnProdSuppSave = new System.Windows.Forms.Button();
             this.LblPackProdCode = new System.Windows.Forms.Label();
             this.LblProdCodeValidate = new System.Windows.Forms.Label();
@@ -51,7 +53,6 @@
             this.LblPackStartValidate = new System.Windows.Forms.Label();
             this.LblPackNameValidate = new System.Windows.Forms.Label();
             this.LblPackageID = new System.Windows.Forms.Label();
-            this.BtnSave = new System.Windows.Forms.Button();
             this.TxtPackName = new System.Windows.Forms.TextBox();
             this.LblPackName = new System.Windows.Forms.Label();
             this.LblPackStartDate = new System.Windows.Forms.Label();
@@ -61,7 +62,7 @@
             this.TxtPackDesc = new System.Windows.Forms.TextBox();
             this.DatePickStartDate = new System.Windows.Forms.DateTimePicker();
             this.LblPackBasePrice = new System.Windows.Forms.Label();
-            this.TxtPackAgency = new System.Windows.Forms.TextBox();
+            this.TxtPackCommission = new System.Windows.Forms.TextBox();
             this.TxtPackBasePrice = new System.Windows.Forms.TextBox();
             this.LblAgencyComm = new System.Windows.Forms.Label();
             this.PnlDelete = new System.Windows.Forms.Panel();
@@ -181,8 +182,10 @@
             // PnlAddModify
             // 
             this.PnlAddModify.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.PnlAddModify.Controls.Add(this.BtnSave);
             this.PnlAddModify.Controls.Add(this.CmbEdit);
             this.PnlAddModify.Controls.Add(this.BtnProdSuppGet);
+            this.PnlAddModify.Controls.Add(this.btnExit);
             this.PnlAddModify.Controls.Add(this.BtnProdSuppSave);
             this.PnlAddModify.Controls.Add(this.LblPackProdCode);
             this.PnlAddModify.Controls.Add(this.LblProdCodeValidate);
@@ -193,7 +196,6 @@
             this.PnlAddModify.Controls.Add(this.LblPackStartValidate);
             this.PnlAddModify.Controls.Add(this.LblPackNameValidate);
             this.PnlAddModify.Controls.Add(this.LblPackageID);
-            this.PnlAddModify.Controls.Add(this.BtnSave);
             this.PnlAddModify.Controls.Add(this.TxtPackName);
             this.PnlAddModify.Controls.Add(this.LblPackName);
             this.PnlAddModify.Controls.Add(this.LblPackStartDate);
@@ -203,7 +205,7 @@
             this.PnlAddModify.Controls.Add(this.TxtPackDesc);
             this.PnlAddModify.Controls.Add(this.DatePickStartDate);
             this.PnlAddModify.Controls.Add(this.LblPackBasePrice);
-            this.PnlAddModify.Controls.Add(this.TxtPackAgency);
+            this.PnlAddModify.Controls.Add(this.TxtPackCommission);
             this.PnlAddModify.Controls.Add(this.TxtPackBasePrice);
             this.PnlAddModify.Controls.Add(this.LblAgencyComm);
             this.PnlAddModify.Location = new System.Drawing.Point(31, 127);
@@ -213,11 +215,23 @@
             this.PnlAddModify.TabIndex = 37;
             this.PnlAddModify.Visible = false;
             // 
+            // BtnSave
+            // 
+            this.BtnSave.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.BtnSave.Location = new System.Drawing.Point(316, 545);
+            this.BtnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.BtnSave.Name = "BtnSave";
+            this.BtnSave.Size = new System.Drawing.Size(453, 35);
+            this.BtnSave.TabIndex = 48;
+            this.BtnSave.Text = "&Save Package";
+            this.BtnSave.UseVisualStyleBackColor = true;
+            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
             // CmbEdit
             // 
             this.CmbEdit.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.CmbEdit.FormattingEnabled = true;
-            this.CmbEdit.Location = new System.Drawing.Point(25, 490);
+            this.CmbEdit.Location = new System.Drawing.Point(25, 500);
             this.CmbEdit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CmbEdit.Name = "CmbEdit";
             this.CmbEdit.Size = new System.Drawing.Size(958, 27);
@@ -228,15 +242,28 @@
             // BtnProdSuppGet
             // 
             this.BtnProdSuppGet.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnProdSuppGet.Location = new System.Drawing.Point(316, 545);
+            this.BtnProdSuppGet.Location = new System.Drawing.Point(316, 451);
             this.BtnProdSuppGet.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnProdSuppGet.Name = "BtnProdSuppGet";
             this.BtnProdSuppGet.Size = new System.Drawing.Size(453, 35);
             this.BtnProdSuppGet.TabIndex = 47;
-            this.BtnProdSuppGet.Text = "Get Product";
+            this.BtnProdSuppGet.Text = "&Get/Add Product";
             this.BtnProdSuppGet.UseVisualStyleBackColor = true;
             this.BtnProdSuppGet.Visible = false;
             this.BtnProdSuppGet.Click += new System.EventHandler(this.BtnProdSuppGet_Click);
+            // 
+            // btnExit
+            // 
+            this.btnExit.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.btnExit.Location = new System.Drawing.Point(315, 697);
+            this.btnExit.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnExit.Name = "btnExit";
+            this.btnExit.Size = new System.Drawing.Size(453, 35);
+            this.btnExit.TabIndex = 46;
+            this.btnExit.Text = "&Exit";
+            this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Visible = false;
+            this.btnExit.Click += new System.EventHandler(this.ToolmnuClose_Click);
             // 
             // BtnProdSuppSave
             // 
@@ -246,7 +273,7 @@
             this.BtnProdSuppSave.Name = "BtnProdSuppSave";
             this.BtnProdSuppSave.Size = new System.Drawing.Size(453, 35);
             this.BtnProdSuppSave.TabIndex = 46;
-            this.BtnProdSuppSave.Text = "Save Product";
+            this.BtnProdSuppSave.Text = "&Save Product";
             this.BtnProdSuppSave.UseVisualStyleBackColor = true;
             this.BtnProdSuppSave.Visible = false;
             this.BtnProdSuppSave.Click += new System.EventHandler(this.BtnProdSuppSave_Click);
@@ -254,9 +281,9 @@
             // LblPackProdCode
             // 
             this.LblPackProdCode.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.LblPackProdCode.Location = new System.Drawing.Point(148, 651);
+            this.LblPackProdCode.Location = new System.Drawing.Point(147, 658);
             this.LblPackProdCode.Name = "LblPackProdCode";
-            this.LblPackProdCode.Size = new System.Drawing.Size(738, 35);
+            this.LblPackProdCode.Size = new System.Drawing.Size(837, 35);
             this.LblPackProdCode.TabIndex = 45;
             this.LblPackProdCode.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -273,9 +300,9 @@
             // LblPackACValidate
             // 
             this.LblPackACValidate.ForeColor = System.Drawing.Color.DarkRed;
-            this.LblPackACValidate.Location = new System.Drawing.Point(320, 413);
+            this.LblPackACValidate.Location = new System.Drawing.Point(320, 420);
             this.LblPackACValidate.Name = "LblPackACValidate";
-            this.LblPackACValidate.Size = new System.Drawing.Size(423, 19);
+            this.LblPackACValidate.Size = new System.Drawing.Size(514, 27);
             this.LblPackACValidate.TabIndex = 42;
             // 
             // LblPackBaseValidate
@@ -283,7 +310,7 @@
             this.LblPackBaseValidate.ForeColor = System.Drawing.Color.DarkRed;
             this.LblPackBaseValidate.Location = new System.Drawing.Point(320, 350);
             this.LblPackBaseValidate.Name = "LblPackBaseValidate";
-            this.LblPackBaseValidate.Size = new System.Drawing.Size(423, 24);
+            this.LblPackBaseValidate.Size = new System.Drawing.Size(491, 24);
             this.LblPackBaseValidate.TabIndex = 41;
             // 
             // LblPackDescValidate
@@ -297,7 +324,7 @@
             // LblPackEndValidate
             // 
             this.LblPackEndValidate.ForeColor = System.Drawing.Color.DarkRed;
-            this.LblPackEndValidate.Location = new System.Drawing.Point(320, 225);
+            this.LblPackEndValidate.Location = new System.Drawing.Point(320, 224);
             this.LblPackEndValidate.Name = "LblPackEndValidate";
             this.LblPackEndValidate.Size = new System.Drawing.Size(423, 17);
             this.LblPackEndValidate.TabIndex = 39;
@@ -307,7 +334,7 @@
             this.LblPackStartValidate.ForeColor = System.Drawing.Color.DarkRed;
             this.LblPackStartValidate.Location = new System.Drawing.Point(320, 159);
             this.LblPackStartValidate.Name = "LblPackStartValidate";
-            this.LblPackStartValidate.Size = new System.Drawing.Size(423, 24);
+            this.LblPackStartValidate.Size = new System.Drawing.Size(423, 19);
             this.LblPackStartValidate.TabIndex = 39;
             // 
             // LblPackNameValidate
@@ -326,18 +353,6 @@
             this.LblPackageID.Name = "LblPackageID";
             this.LblPackageID.Size = new System.Drawing.Size(746, 31);
             this.LblPackageID.TabIndex = 37;
-            // 
-            // BtnSave
-            // 
-            this.BtnSave.Font = new System.Drawing.Font("Nirmala UI", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.BtnSave.Location = new System.Drawing.Point(315, 436);
-            this.BtnSave.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.BtnSave.Name = "BtnSave";
-            this.BtnSave.Size = new System.Drawing.Size(453, 35);
-            this.BtnSave.TabIndex = 36;
-            this.BtnSave.Text = "Save Package";
-            this.BtnSave.UseVisualStyleBackColor = true;
-            this.BtnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // TxtPackName
             // 
@@ -391,7 +406,7 @@
             // 
             this.DatePickEndDate.CustomFormat = "";
             this.DatePickEndDate.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.DatePickEndDate.Location = new System.Drawing.Point(316, 187);
+            this.DatePickEndDate.Location = new System.Drawing.Point(316, 182);
             this.DatePickEndDate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DatePickEndDate.Name = "DatePickEndDate";
             this.DatePickEndDate.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -430,15 +445,15 @@
             this.LblPackBasePrice.TabIndex = 25;
             this.LblPackBasePrice.Text = "Package Base Price:";
             // 
-            // TxtPackAgency
+            // TxtPackCommission
             // 
-            this.TxtPackAgency.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.TxtPackAgency.Location = new System.Drawing.Point(316, 375);
-            this.TxtPackAgency.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.TxtPackAgency.Name = "TxtPackAgency";
-            this.TxtPackAgency.Size = new System.Drawing.Size(452, 34);
-            this.TxtPackAgency.TabIndex = 5;
-            this.TxtPackAgency.Tag = "Package Agency Commission";
+            this.TxtPackCommission.Font = new System.Drawing.Font("Nirmala UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.TxtPackCommission.Location = new System.Drawing.Point(316, 380);
+            this.TxtPackCommission.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TxtPackCommission.Name = "TxtPackCommission";
+            this.TxtPackCommission.Size = new System.Drawing.Size(452, 34);
+            this.TxtPackCommission.TabIndex = 5;
+            this.TxtPackCommission.Tag = "Agency Commission Price";
             // 
             // TxtPackBasePrice
             // 
@@ -655,7 +670,7 @@
         private System.Windows.Forms.Panel PnlPackages;
         private System.Windows.Forms.DateTimePicker DatePickEndDate;
         private System.Windows.Forms.DateTimePicker DatePickStartDate;
-        private System.Windows.Forms.TextBox TxtPackAgency;
+        private System.Windows.Forms.TextBox TxtPackCommission;
         private System.Windows.Forms.Label LblAgencyComm;
         private System.Windows.Forms.TextBox TxtPackBasePrice;
         private System.Windows.Forms.Label LblPackBasePrice;
@@ -671,7 +686,6 @@
         private System.Windows.Forms.ToolStripMenuItem ToolmnuRemove;
         private System.Windows.Forms.ToolStripMenuItem ToolmnuClose;
         private System.Windows.Forms.Label LblTitle;
-        private System.Windows.Forms.Button BtnSave;
         private System.Windows.Forms.Panel PnlAddModify;
         private System.Windows.Forms.Label LblPackageID;
         private System.Windows.Forms.TextBox TxtWelcome;
@@ -703,5 +717,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label LblProdSuppName;
         private System.Windows.Forms.ToolStripMenuItem ToolmnuDisplay;
+        private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Button BtnSave;
     }
 }
